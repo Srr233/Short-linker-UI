@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack",
-    "dev": "webpack serve"
+    "dev": "webpack-dev-server"
   },
   "repository": {
     "type": "git",
@@ -19,6 +19,7 @@
   "homepage": "https://github.com/Srr233/Short-linker-UI#readme",
   "devDependencies": {
     "babel-loader": "^8.2.3",
+    "copy-webpack-plugin": "^9.0.1",
     "css-loader": "^6.5.0",
     "html-webpack-plugin": "^5.5.0",
     "loader-runner": "^4.2.0",
