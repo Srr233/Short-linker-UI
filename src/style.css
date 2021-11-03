@@ -1,8 +1,14 @@
+h1, h2, h3, body {
+    margin: 0;
+}
+
 #header {
 
 }
 #header .container {
+    display: flex;
     background-color: antiquewhite;
+    justify-content: space-between;
 }
 
 #main {
@@ -16,4 +22,62 @@ vertical-align: top;
 .container {
     max-width: 1280px;
     padding: 0 10px 0 10px;
+}
+:root {
+    font-size: 10px;
+    --close-left: rotate(0);
+    --close-right: rotate(0);
+    --top-up: .8rem;
+    --top-down: -.8rem;
+}
+.menu-button span {
+    border-bottom: 3px solid cornflowerblue;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 100%;
+    height: 3px;
+    display: block;
+    transform: translate(-50%, -50%);
+}
+.openedMenuBar {
+    transform: translate(-50%, -50%) rotate(25deg) !important;
+}
+.menu-button span:after {
+    border-bottom: 3px solid cornflowerblue;
+    position: absolute;
+    top: var(--top-down);
+    width: 100%;
+    height: 3px;
+    display: block;
+    content: '';
+    transform: var(--close-right);
+}
+
+.menu-button span:before {
+    border-bottom: 3px solid cornflowerblue;
+    position: absolute;
+    top: var(--top-up);
+    width: 100%;
+    height: 3px;
+    display: block;
+    content: '';
+    transform: var(--close-left);
+}
+.menu-button {
+    position: relative;
+    width: 3rem;
+    height: 3rem;
+    cursor: pointer;
+}
+
+.closeLeft {
+    transition: .3s;
+    transform: rotate(-45deg);
+    top: 0;
+}
+.closeRight {
+    transition: .3s;
+    transform: rotate(45deg);
+    top: 0;
 }

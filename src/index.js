@@ -1,0 +1,1 @@
+import menuBar from './modules/menuBar';
