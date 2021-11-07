@@ -10,11 +10,44 @@ h1, h2, h3, body {
     background-color: antiquewhite;
     justify-content: space-between;
 }
-
+nav {
+    position: absolute;
+    top: 0;
+    right: -100vh;
+    display: none;
+}
+.openBurgerNav {
+    right: 0;
+    display: block;
+}
+#header ul {
+    font-size: 2rem;
+    margin: 0;
+    height: 100vh;
+    width: 320px;
+    background-color: rgba(163, 147, 55, .1);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+}
+#header li {
+    margin-bottom: 10px;
+    background-color: rgba(121, 91, 240, .5);
+    width: 100%;
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+}
 #main {
 vertical-align: top;
 }
-
+#main .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 #footer {
 
 }
@@ -39,6 +72,7 @@ vertical-align: top;
     height: 3px;
     display: block;
     transform: translate(-50%, -50%);
+    z-index: 100;
 }
 .openedMenuBar {
     transform: translate(-50%, -50%) rotate(25deg) !important;
@@ -80,4 +114,19 @@ vertical-align: top;
     transition: .3s;
     transform: rotate(45deg);
     top: 0;
+}
+
+input {
+    display: block;
+    margin: 0 auto;
+}
+form {
+    display: block;
+}
+.displayNone {
+    display: none;
+}
+.name-of-form {
+    font-size: 2rem;
+    text-align: center;
 }
