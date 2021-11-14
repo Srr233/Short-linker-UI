@@ -1,4 +1,6 @@
-const [send_login, send_register] = [document.querySelector('.send_login'), document.querySelector('.send_register')];
+import openAuthWindow from "../helpers/openAuthWindow";
+import openLinkWindow from "../helpers/openLinkWindow";
+
 const [login_form, register_form] = [document.querySelector('.login'), document.querySelector('.register')];
 
 const options = {
@@ -6,15 +8,19 @@ const options = {
     password: '',
     email: ''
 }
-const auth_service_URL = 'http://localhost:3000/users/login';
-const createRequest = async (optionsToSend, method) => {
-    const respond = await fetch(auth_service_URL, {
+const auth_service_URL = 'http://localhost:3000/';
+const createRequest = async (optionsToSend, method, path) => {
+    const link = auth_service_URL + path;
+    let respond = await fetch(link, {
         method,
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(optionsToSend)
     });
+    if (respond.status === 400) alert('Email is not correct');
+    if (respond.status === 401) alert('Login or password is not correct');
+    if (respond.status === 403) alert('Email is registered');
     return respond;
 }
 
@@ -29,11 +35,24 @@ const handlerSend = (element_form) => {
             alert('Incorrect data');
             return;
         }
-        createRequest(options, 'POST')
+        
+        createRequest(options, 'POST', login_form === element_form ? 'login' : 'register')
         .then(resp => resp.json())
-        .then(data => console.log(data));
+        .then(data => {
+            if (data.auth_token) {
+                localStorage.setItem('token', data.auth_token);
+                openLinkWindow();
+            } else {
+                openAuthWindow();
+            }
+        })
         e.preventDefault();
     }
 }
-send_login.addEventListener('click', handlerSend(login_form));
-send_register.addEventListener('click', handlerSend(register_form));
+
+const handlerLogin = handlerSend(login_form);
+const handlerRegister = handlerSend(register_form);
+export {
+    handlerLogin,
+    handlerRegister
+}

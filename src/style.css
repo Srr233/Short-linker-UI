@@ -124,9 +124,77 @@ form {
     display: block;
 }
 .displayNone {
-    display: none;
+    display: none !important;
 }
 .name-of-form {
     font-size: 2rem;
     text-align: center;
+}
+
+.baseFunctional {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.greeting {
+    font-size: 2rem;
+}
+
+.createLink {
+    width: 100%;
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+.createLink p {
+    font-size: 1em;
+
+}
+.createLink_input {
+    display: flex;
+}
+
+.createLink input {
+    font-size: 1.5em;
+    margin: 0;
+    width: 50%;
+    border-radius: 8px 8px 8px 8px;
+}
+.createLink_input div {
+    font-size: 1.5em;
+}
+.createLink button {
+    margin: 0 5px 0 5px;
+    border-radius: 8px 8px 8px 8px;
+
+}
+
+.links {
+    width: 100%;
+    font-size: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.links p {
+    font-size: 1em;
+}
+
+.listOfLinks {
+    width: 70%;
+    height: 35vh;
+    overflow: auto;
+}
+
+.link_wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0 10px 0;
+    background-color: aliceblue;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.link {
+    font-size: 1em;
 }
