@@ -1,11 +1,11 @@
-import auth_service_URL from '../generic data/origin';
+import { short_linker } from '../generic data/origin';
 import { open_log_in } from './openLogin';
 
 
 const show_statistic = async ({ target }) => {
     const [statistic_wrapper, name_statistic, clicks] = [document.querySelector('.statistic-wrapper'), document.querySelector('.statistic__name'), document.querySelector('.statistic__clicks')];
     const link_element = target.parentElement.parentElement.children[0];
-    const response = await fetch(auth_service_URL + 'statistic', {
+    const response = await fetch(short_linker + '/statistic', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

@@ -1,13 +1,8 @@
-import {open_log_in} from "./openLogin";
-
-const data = {
-    login: 'login',
-    link: 'link'
-}
-const remote = 'http://localhost:3000';
+import { short_linker } from "../generic data/origin";
+import { open_log_in } from "./openLogin";
 
 const request = async (path, data, method) => {
-    return await fetch(remote + path, {
+    return await fetch(short_linker + path, {
         method,
         headers: {
             'Content-Type': 'application/json',
