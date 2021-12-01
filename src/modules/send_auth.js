@@ -1,5 +1,7 @@
 import openAuthWindow from "../helpers/openAuthWindow";
 import openLinkWindow from "../helpers/openLinkWindow";
+import { add_all_links } from "./add_all_links";
+import auth_service_URL from '../generic data/origin';
 
 const [login_form, register_form] = [document.querySelector('.login'), document.querySelector('.register')];
 
@@ -8,8 +10,9 @@ const options = {
     password: '',
     email: ''
 }
-const auth_service_URL = 'http://localhost:3000/';
+
 const createRequest = async (optionsToSend, method, path) => {
+    localStorage.setItem('login', optionsToSend.login);
     const link = auth_service_URL + path;
     let respond = await fetch(link, {
         method,
@@ -42,6 +45,7 @@ const handlerSend = (element_form) => {
             if (data.auth_token) {
                 localStorage.setItem('token', data.auth_token);
                 openLinkWindow();
+                add_all_links(data.links);
             } else {
                 openAuthWindow();
             }
